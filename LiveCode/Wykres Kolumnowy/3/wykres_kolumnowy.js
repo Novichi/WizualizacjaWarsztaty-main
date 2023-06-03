@@ -1,20 +1,22 @@
+//Dodanie skali dla osi x y i wyswietlenie wykresu 
+
 // Definiujemy dane
 const data = [
-  { name: 'Łukasz', score: 90 },
-  { name: 'Kuba', score: 9 },
-  { name: 'Olo', score: 10 },
-  { name: 'Filip', score: 11 }  
-];
+    { name: 'Łukasz', score: 90 },
+    { name: 'Kuba', score: 9 },
+    { name: 'Olo', score: 10 },
+    { name: 'Filip', score: 11 }
+  ];
 
-
-
+  
 // Definiujemy szerokość, wysokość i marginesy wykresu
 const width = 900;
 const height = 450;
 const margin = { top: 50, bottom: 50, left: 50, right: 50 };
 
-// Tworzymy obiekt SVG
-const svgRect = d3.select('#d3-container') // Wybieramy kontener dla wykresu
+
+// Tworzymy obiekt SVG 
+const svgRect = d3.select('#d3-container') // Wybieramy kontener dla wykresu 
 .append('svg') // Dodajemy element SVG
 .attr('width', width - margin.left - margin.right) // Ustalamy szerokość SVG
 .attr('height', height - margin.top - margin.bottom) // Ustalamy wysokość SVG
@@ -45,31 +47,5 @@ svgRect
   .attr("height", d => y(0) - y(d.score)) // Wysokość słupka jest zależna od wartości 'score' elementu danych
   .attr("width", x.bandwidth()); // Szerokość słupka jest zależna od szerokości pasma
 
-// Definiujemy funkcję dla osi Y
-function yAxis(g) {
-  g.attr("transform", `translate(${margin.left}, 0)`) // Przesuwamy oś Y o wartość lewego marginesu
-      .call(d3.axisLeft(y).ticks(null, data.format)) // Dodajemy oznaczenia na osi Y
-      .attr("font-size", '20px') // Nadajemy rozmiar czcionki oznaczeń
-}
-
-// Definiujemy funkcję dla osi X
-function xAxis(g) {
-  g.attr("transform", `translate(0,${height - margin.bottom})`) // Przesuwamy oś X o wartość dolnego marginesu
-      .call(d3.axisBottom(x).tickFormat(i => data[i].name)) // Dodajemy oznaczenia na osi X
-      .attr("font-size", '20px') // Nadajemy rozmiar czcionki oznaczeń
-}
-
-// Dodajemy osi do wykresu
-svgRect.append("g").call(xAxis); // Dodajemy oś X
-svgRect.append("g").call(yAxis); // Dodajemy oś Y
+  
 svgRect.node(); // Generujemy wykres
-
-
-// Zadanie 1.
-// Dodanie osoby do wykresu
-
-// Zadanie 2.
-// Zmiana kolorów każdej osoby w wykresie na dowolne (różne)
-
-// Zadanie 3. (Dodatkowe)
-// Wczytanie danych z pliku CSV

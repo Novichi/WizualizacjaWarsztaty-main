@@ -44,7 +44,6 @@ g
   )
   .attr('fill', function(d){ return(color(d.data.key)) }) // Wypełnia segment kolorem odpowiadającym kluczowi danych
   .attr("stroke", "black") // Ustala kolor obrysu na czarny
-  //------------------------------------------->miejsce na twój kod<-------------------------------------------
   .style("stroke-width", "4px") // Ustala szerokość obrysu na 4px
   .style("opacity", 0.7) // Ustala przeźroczystość na 0.7
 

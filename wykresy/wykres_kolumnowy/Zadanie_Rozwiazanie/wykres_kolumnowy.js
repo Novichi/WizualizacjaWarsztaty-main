@@ -3,10 +3,9 @@ const data = [
   { name: 'Łukasz', score: 90 },
   { name: 'Kuba', score: 9 },
   { name: 'Olo', score: 10 },
-  { name: 'Filip', score: 11 }  
+  { name: 'Filip', score: 11 },
+  {name: 'Kazimierz', score: 53}  
 ];
-
-
 
 // Definiujemy szerokość, wysokość i marginesy wykresu
 const width = 900;
@@ -31,10 +30,14 @@ const y = d3.scaleLinear() // Skala liniowa, używana dla zmiennych liczbowych
 .domain([0, 100]) // Zakres danych (od 0 do 100)
 .range([height - margin.bottom, margin.top]) // Zakres pikseli (od dolnego do górnego marginesu)
 
+// Definiujemy kolory
+const colors = d3.scaleOrdinal()
+  .domain(data.map(d => d.name))
+  .range(d3.schemeSet2);
+
 // Dodajemy słupki do wykresu
 svgRect
 .append("g") // Dodajemy grupę, która będzie zawierać słupki
-.attr("fill", 'royalblue') // Nadajemy kolor słupkom
 .selectAll("rect") // Wybieramy wszystkie przyszłe elementy 'rect'
 .data(data.sort((a, b) => d3.descending(a.score, b.score))) // Łączymy dane z wykresem, sortując je malejąco
 .join("rect") // Dla każdego elementu danych tworzymy jeden element 'rect'
@@ -43,7 +46,8 @@ svgRect
   .attr('title', (d) => d.score) // Tytuł słupka (po najechaniu myszką) to wartość 'score' elementu danych
   .attr("class", "rect") // Nadajemy klasę 'rect' każdemu słupek
   .attr("height", d => y(0) - y(d.score)) // Wysokość słupka jest zależna od wartości 'score' elementu danych
-  .attr("width", x.bandwidth()); // Szerokość słupka jest zależna od szerokości pasma
+  .attr("width", x.bandwidth()) // Szerokość słupka jest zależna od szerokości pasma
+  .attr("fill", d => colors(d.name)); // Nadajemy kolor każdemu słupek zgodnie z nazwą osoby
 
 // Definiujemy funkcję dla osi Y
 function yAxis(g) {
@@ -63,13 +67,3 @@ function xAxis(g) {
 svgRect.append("g").call(xAxis); // Dodajemy oś X
 svgRect.append("g").call(yAxis); // Dodajemy oś Y
 svgRect.node(); // Generujemy wykres
-
-
-// Zadanie 1.
-// Dodanie osoby do wykresu
-
-// Zadanie 2.
-// Zmiana kolorów każdej osoby w wykresie na dowolne (różne)
-
-// Zadanie 3. (Dodatkowe)
-// Wczytanie danych z pliku CSV

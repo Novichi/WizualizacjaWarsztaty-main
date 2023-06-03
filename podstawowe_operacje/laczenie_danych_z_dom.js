@@ -1,5 +1,5 @@
 // Definiujemy dane do połączenia z paragrafami
-var data = ["jeden", "dwa", "trzy"];
+var data = ["jeden", "dwa", "trzy", "cztery"];
 
 // Łączymy dane z paragrafami i ustawiamy tekst paragrafów na odpowiadające im dane
 d3.selectAll("p")

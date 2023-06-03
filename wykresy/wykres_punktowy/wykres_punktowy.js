@@ -13,7 +13,10 @@ var svg = d3.select("#my_dataviz") // Wybieramy div o id 'my_dataviz'
           "translate(" + margin.left + "," + margin.top + ")");
           
 // Czytamy dane
+// Czytamy dane
+//d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv", function(data) {
 d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv", function(data) {
+
 
   // Dodajemy os X
   var x = d3.scaleLinear() // Tworzymy skalę liniową dla osi X
