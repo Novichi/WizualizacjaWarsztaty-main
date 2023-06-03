@@ -1,4 +1,3 @@
-response.setHeader('Content-Type', 'csv/text'); 
 // Definiujemy szerokość, wysokość i marginesy wykresu
 const width = 900;
 const height = 450;
